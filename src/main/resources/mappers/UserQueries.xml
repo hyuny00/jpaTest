@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="com.example.queries.UserQueries">
+    
+    <sql id="getUserById">
+        SELECT u FROM User1 u WHERE u.id = :id
+    </sql>
+    
+    
+    <sql id="getUsersByName">
+        SELECT u FROM User1 u WHERE u.name LIKE :name
+        <if test="age != null">
+            AND u.age > :age
+        </if>
+    </sql>
+    
+    
+</mapper>
+

@@ -1,0 +1,26 @@
+
+
+db1:
+  datasource:
+    jdbc-url: jdbc:h2:tcp://localhost/~/test  # H2 database URL
+    driver-class-name: org.h2.Driver
+    username: sa  # H2 default username
+    password:  # H2 default password (empty)
+
+spring:
+  jpa:    
+    hibernate:
+      ddl-auto: update  # Hibernate DDL auto strategy (update, create, create-drop, validate, none)
+    show-sql: true  # Show SQL queries in console
+    naming:
+      physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl  # Physical naming strategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect  # Hibernate dialect for H2
+        format_sql: true  # Format SQL queries
+        use_sql_comments: true  # Add SQL comments
+
+sql:
+  xml:
+    locations: classpath:mappers/**/*.xml
+    
