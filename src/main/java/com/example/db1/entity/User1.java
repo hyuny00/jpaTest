@@ -1,7 +1,6 @@
 package com.example.db1.entity;
 
 import javax.persistence.Column;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,14 +22,14 @@ CREATE SEQUENCE IF NOT EXISTS HIBERNATE_SEQUENCE START WITH 1 INCREMENT BY 1;
 
  * @author FutechSoft
  *
- */
+ */ 
 
 @Entity
 public class User1 {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    
+     
     
     @Column
     private String name;

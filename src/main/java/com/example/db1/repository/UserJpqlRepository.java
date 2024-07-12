@@ -1,6 +1,5 @@
 package com.example.db1.repository;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.component.DynamicSqlProvider;
 import com.example.db1.entity.User1;
+import com.example.dto.UserDto;
 import com.example.util.QueryUtil;
 
 @Repository
@@ -26,7 +26,7 @@ public class UserJpqlRepository {
     
     
 
-    public List<User1> getUsers(String name, Integer age) {
+    public List<UserDto> getUsers(String name, Integer age) {
         Map<String, Object> params = new HashMap<>();
         
         params.put("name",  "%" + name + "%");
@@ -40,7 +40,7 @@ public class UserJpqlRepository {
         String jpql = sqlProvider.getSql("com.example.queries.UserQueries.getUsersByName", params);
         
    
-        TypedQuery<User1> query = QueryUtil.getQuery(entityManager, jpql, params, User1.class);
+        TypedQuery<UserDto> query = QueryUtil.getQuery(entityManager, jpql, params, UserDto.class);
         
         
         

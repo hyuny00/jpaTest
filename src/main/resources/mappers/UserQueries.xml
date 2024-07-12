@@ -7,7 +7,7 @@
     
     
     <sql id="getUsersByName">
-        SELECT u FROM User1 u WHERE u.name LIKE :name
+        SELECT com.example.dto.UserDto(u.id, u.name, u.age) FROM User1 u WHERE u.name LIKE :name
         <if test="age != null">
             AND u.age > :age
         </if>

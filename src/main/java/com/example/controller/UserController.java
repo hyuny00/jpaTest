@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.db1.entity.User1;
+import com.example.dto.UserDto;
 import com.example.service.UserService;
 
 @RestController
@@ -40,7 +41,7 @@ public class UserController {
     
 
     @GetMapping("/db1/{name}/{age}")
-    public List<User1> getUserFromDb2(@PathVariable String name, @PathVariable int age) {
+    public List<UserDto> getUserFromDb2(@PathVariable String name, @PathVariable int age) {
         return userService.getUserFromDb2(name, age);
     }
 
