@@ -12,6 +12,9 @@ import javax.persistence.TypedQuery;
 public class QueryUtil {
 	
 	public static <T> TypedQuery<T> getQuery(EntityManager entityManager, String jpql, Map<String, Object> params, Class<T> resultClass) {
+		
+		System.out.println("jpql...................."+jpql);
+		
         List<String> parameterList = extractParameters(jpql);
 
         TypedQuery<T> query = entityManager.createQuery(jpql, resultClass);
@@ -41,4 +44,6 @@ public class QueryUtil {
 
         return parameterList;
     }
+    
+  
 }

@@ -3,27 +3,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.queries.UserQueries">
     
-    <select id="getUserById">
+    <sql id="getUserById">
         SELECT u FROM User1 u WHERE u.id = :id
-    </select>
+    </sql>
   
     
     <select id="getUsersByName">
         SELECT com.example.dto.UserDto(u.id, u.name, u.age) FROM User1 u WHERE u.name LIKE :name
-        <if test="age != null and age.trim() != ''">
+        <if test="age != null">
             AND u.age > :age
         </if>
     </select>
     
     
-    <select id="getUsersByName2">
+    <sql id="getUsersByName2">
         SELECT u FROM User1 u WHERE u.name LIKE :name
         
         
         <if test="age222 == ''">
             AND u.age > :age
         </if>
-    </select>
+    </sql>
     
     
 </mapper>

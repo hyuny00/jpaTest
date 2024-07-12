@@ -1,23 +1,27 @@
 package com.example.controller;
 
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.common.controller.AbstractController;
 import com.example.db1.entity.User1;
 import com.example.dto.UserDto;
 import com.example.service.UserService;
+import com.example.util.FtMap;
 
 @RestController
 @RequestMapping("/api/users")
-public class UserController {
+public class UserController  extends AbstractController {
 
     private final UserService userService;
 
@@ -27,8 +31,11 @@ public class UserController {
     }
 
     @PostMapping("/db1")
-    public User1 createUserInDb(@RequestBody String name) {
-        return userService.createUserInDb(name);
+    public User1 createUserInDb(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
+    	
+    	FtMap params = getFtMap(request);
+    	
+        return userService.TestA(params);
     }
 
  
@@ -45,6 +52,22 @@ public class UserController {
         return userService.getUserFromDb2(name, age);
     }
 
+    @GetMapping("/db12/{id}")
+    public List<FtMap> getUserFromDb(@PathVariable int id) {
+        return userService.findUserByIdAsCustomMap(id);
+    }
+    
+    @GetMapping("/db1234")
+    public List<FtMap> getUsers2(HttpServletRequest request) throws IllegalAccessException {
+    	
+    	FtMap params = getFtMap(request);
+    	
+    	
+    	System.out.println("......................"+params.get("age"));
+    	
+        return userService.getUsers2(params);
+    }
+    
     
 }
 
