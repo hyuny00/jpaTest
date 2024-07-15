@@ -20,7 +20,7 @@
         SELECT u FROM User1 u WHERE u.name LIKE '%'||:name||'%'
 
 
-        <if test="age222 == ''">
+        <if test="age != null and age.trim() != ''">
             AND u.age > :age
         </if>
     </select>
