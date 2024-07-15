@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.config.CustomObjectMapper;
+import com.example.component.CustomObjectMapper;
 import com.example.db1.entity.User1;
 import com.example.db1.repository.User1Repository;
 import com.example.db1.repository.UserJpqlRepository;
