@@ -23,29 +23,27 @@ import com.example.util.FtMap;
 @RequestMapping("/api/users")
 public class UserController  extends AbstractController {
 
-    private final UserService userService;
+	@Autowired
+    private  UserService userService;
 
-    @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+
 
     @PostMapping("/db1")
     public User1 createUserInDb(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
-    	
+
     	FtMap params = getFtMap(request);
-    	
+
         return userService.TestA(params);
     }
 
- 
+
 
     @GetMapping("/db1/{id}")
     public User1 getUserFromDb(@PathVariable Long id) {
         return userService.getUserFromDb(id);
     }
-    
-    
+
+
 
     @GetMapping("/db1/{name}/{age}")
     public List<UserDto> getUserFromDb2(@PathVariable String name, @PathVariable int age) {
@@ -56,19 +54,19 @@ public class UserController  extends AbstractController {
     public List<FtMap> getUserFromDb(@PathVariable int id) {
         return userService.findUserByIdAsCustomMap(id);
     }
-    
+
     @GetMapping("/db1234")
     public List<FtMap> getUsers2(HttpServletRequest request) throws IllegalAccessException {
-    	
+
     	FtMap params = getFtMap(request);
-    	
-    	
+    	params.put("name", "홍");
+
     	System.out.println("......................"+params.get("age"));
-    	
+
         return userService.getUsers2(params);
     }
-    
-    
+
+
 }
 
 

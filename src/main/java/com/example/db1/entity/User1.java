@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 
 /**
- * 
+ *
 
 
 CREATE TABLE  user1(
@@ -22,22 +22,31 @@ CREATE SEQUENCE IF NOT EXISTS HIBERNATE_SEQUENCE START WITH 1 INCREMENT BY 1;
 
  * @author FutechSoft
  *
- */ 
+ */
 
 @Entity
 public class User1 {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-     
-    
+
+
     @Column
     private String name;
-    
+
     @Column(name = "age")
     private Integer age;
-    
-    
+
+    @Column
+    private String userTel;
+
+
+	public String getUserTel() {
+		return userTel;
+	}
+	public void setUserTel(String userTel) {
+		this.userTel = userTel;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -57,7 +66,7 @@ public class User1 {
 		this.age = age;
 	}
 
-    
-    
-    
+
+
+
 }

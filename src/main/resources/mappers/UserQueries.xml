@@ -2,29 +2,29 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.queries.UserQueries">
-    
+
     <select id="getUserById">
         SELECT u FROM User1 u WHERE u.id = :id
     </select>
-  
-    
+
+
     <select id="getUsersByName">
         SELECT com.example.dto.UserDto(u.id, u.name, u.age) FROM User1 u WHERE u.name LIKE :name
         <if test="age != null and age.trim() != ''">
             AND u.age > :age
         </if>
     </select>
-    
-    
+
+
     <select id="getUsersByName2">
-        SELECT u FROM User1 u WHERE u.name LIKE :name
-        
-        
+        SELECT u FROM User1 u WHERE u.name LIKE '%'||:name||'%'
+
+
         <if test="age222 == ''">
             AND u.age > :age
         </if>
     </select>
-    
-    
+
+
 </mapper>
 
