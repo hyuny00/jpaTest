@@ -98,8 +98,17 @@ public class UserService {
 	public List<FtMap> getUsers3(FtMap param) throws IllegalAccessException {
 
     	param = ConvertUtil.convertMapToObjectFieldType(param, User1.class);
+    	List<User1> list= userJpqlRepository.getUsers3(param);
+
+    	//모든 column 을 조회해야함  SELECT u.id, u.name, u.age , u.user_tel FROM User1 u  WHERE u.name LIKE '%'||:name||'%'
+        List<FtMap> listMap = list.stream()
+                .map(user -> objectConvert.entityToMap(user))
+                .collect(Collectors.toList());
 
 
+		return listMap;
+		
+/* 모든 column 을 조회안해도됨  SELECT u.id, u.name, u.age FROM User1 u  WHERE u.name LIKE '%'||:name||'%'
     	List<Object[]> list= userJpqlRepository.getUsers3(param);
     	
     	
@@ -117,7 +126,7 @@ public class UserService {
     	
     	}
     	return listMap;
-    	
+    */	
 	}
 
 

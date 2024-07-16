@@ -76,17 +76,17 @@ public class UserJpqlRepository {
     }
     
     
-    public List<Object[]> getUsers3(FtMap param) throws IllegalAccessException {
+    public List<User1> getUsers3(FtMap param) throws IllegalAccessException {
 
         String jpql = sqlProvider.getQueryById("com.example.queries.UserQueries.getUsersByName3", param);
         
         
         System.out.println("jpql........"+jpql);
 
-        Query query = QueryUtil.getNativeQuery(entityManager, jpql, param);
+        Query query = QueryUtil.getNativeQuery(entityManager, jpql, param, User1.class);
 
 
-        List<Object[]> gg= query.getResultList(); 
+        List<User1> gg= query.getResultList(); 
 
  
         return gg;

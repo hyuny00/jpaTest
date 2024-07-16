@@ -27,7 +27,7 @@
 
 
 	 <select id="getUsersByName3">
-        SELECT u.id, u.name, u.age FROM User1 u  WHERE u.name LIKE '%'||:name||'%'
+        SELECT u.id, u.name, u.age , u.user_tel FROM User1 u  WHERE u.name LIKE '%'||:name||'%'
         
         <if test="age == ''">
             AND u.age > :age

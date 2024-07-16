@@ -31,13 +31,13 @@ public class QueryUtil {
         return query;
     }
 	
-	public static <T> Query getNativeQuery(EntityManager entityManager, String jpql, Map<String, Object> params) {
+	public static <T> Query getNativeQuery(EntityManager entityManager, String jpql, Map<String, Object> params, Class<T> resultClass) {
 		
 		System.out.println("jpql...................."+jpql);
 		
         List<String> parameterList = extractParameters(jpql);
 
-        Query query = entityManager.createNativeQuery(jpql);
+        Query query = entityManager.createNativeQuery(jpql,resultClass);
 
         for (Map.Entry<String, Object> entry : params.entrySet()) {
             if (parameterList.contains(entry.getKey())) {
