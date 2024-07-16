@@ -25,7 +25,7 @@ public class UserService {
 	private UserJpqlRepository userJpqlRepository;
 
 	@Autowired
-	private  ObjectConvert customObjectMapper;
+	private  ObjectConvert objectConvert;
 
 
 
@@ -34,7 +34,7 @@ public class UserService {
 
 		User1 user = new User1();
 
-		user = customObjectMapper.mapToEntity(param, User1.class);
+		user = objectConvert.mapToEntity(param, User1.class);
 		//ConvertUtil.mapToBean(user, param);
 
 
@@ -85,7 +85,7 @@ public class UserService {
     	List<User1> list= userJpqlRepository.getUsers2(param);
 
         List<FtMap> listMap = list.stream()
-                .map(user -> customObjectMapper.entityToMap(user))
+                .map(user -> objectConvert.entityToMap(user))
                 .collect(Collectors.toList());
 
 
