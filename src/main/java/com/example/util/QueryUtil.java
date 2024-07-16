@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 public class QueryUtil {
@@ -18,6 +19,25 @@ public class QueryUtil {
         List<String> parameterList = extractParameters(jpql);
 
         TypedQuery<T> query = entityManager.createQuery(jpql, resultClass);
+
+        for (Map.Entry<String, Object> entry : params.entrySet()) {
+            if (parameterList.contains(entry.getKey())) {
+                if (entry.getValue() != null) {
+                    query.setParameter(entry.getKey(), entry.getValue());
+                }
+            }
+        }
+
+        return query;
+    }
+	
+	public static <T> Query getNativeQuery(EntityManager entityManager, String jpql, Map<String, Object> params) {
+		
+		System.out.println("jpql...................."+jpql);
+		
+        List<String> parameterList = extractParameters(jpql);
+
+        Query query = entityManager.createNativeQuery(jpql);
 
         for (Map.Entry<String, Object> entry : params.entrySet()) {
             if (parameterList.contains(entry.getKey())) {

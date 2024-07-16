@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,5 +74,23 @@ public class UserJpqlRepository {
 
         return gg;
     }
+    
+    
+    public List<Object[]> getUsers3(FtMap param) throws IllegalAccessException {
+
+        String jpql = sqlProvider.getQueryById("com.example.queries.UserQueries.getUsersByName3", param);
+        
+        
+        System.out.println("jpql........"+jpql);
+
+        Query query = QueryUtil.getNativeQuery(entityManager, jpql, param);
+
+
+        List<Object[]> gg= query.getResultList(); 
+
+ 
+        return gg;
+    }
+
 
 }

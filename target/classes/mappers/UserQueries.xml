@@ -26,5 +26,13 @@
     </select>
 
 
+	 <select id="getUsersByName3">
+        SELECT u.id, u.name, u.age FROM User1 u  WHERE u.name LIKE '%'||:name||'%'
+        
+        <if test="age == ''">
+            AND u.age > :age
+        </if>
+    </select>
+
 </mapper>
 

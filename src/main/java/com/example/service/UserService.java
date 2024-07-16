@@ -1,6 +1,7 @@
 package com.example.service;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -91,6 +92,32 @@ public class UserService {
 
 		return listMap;
 
+	}
+	
+	
+	public List<FtMap> getUsers3(FtMap param) throws IllegalAccessException {
+
+    	param = ConvertUtil.convertMapToObjectFieldType(param, User1.class);
+
+
+    	List<Object[]> list= userJpqlRepository.getUsers3(param);
+    	
+    	
+    	List<FtMap> listMap = new ArrayList<FtMap>();
+    	
+    	for (Object[] row : list) {
+    		
+    		 FtMap dataMap = new FtMap();
+    		 dataMap.put("id",  row[0]);
+             dataMap.put("name",  row[1]);
+             dataMap.put("age",  row[2]);
+             
+             
+             listMap.add(dataMap);
+    	
+    	}
+    	return listMap;
+    	
 	}
 
 

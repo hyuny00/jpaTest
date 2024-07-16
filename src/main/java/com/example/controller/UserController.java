@@ -67,6 +67,17 @@ public class UserController  extends AbstractController {
     }
 
 
+    @GetMapping("/db12345")
+    public List<FtMap> getUsers3(HttpServletRequest request) throws IllegalAccessException {
+
+    	FtMap params = getFtMap(request);
+    	params.put("name", "홍");
+
+    	System.out.println("......................"+params.get("age"));
+
+        return userService.getUsers3(params);
+    }
+    
 }
 
 
