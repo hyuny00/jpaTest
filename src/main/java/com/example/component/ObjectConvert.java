@@ -7,14 +7,14 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
-public class CustomObjectMapper extends ObjectMapper {
+public class ObjectConvert extends ObjectMapper {
 
     /**
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CustomObjectMapper() {
+	public ObjectConvert() {
         this.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 

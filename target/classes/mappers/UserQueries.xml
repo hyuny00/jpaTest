@@ -9,8 +9,8 @@
 
 
     <select id="getUsersByName">
-        SELECT com.example.dto.UserDto(u.id, u.name, u.age) FROM User1 u WHERE u.name LIKE :name
-        <if test="age != null and age.trim() != ''">
+        SELECT new com.example.dto.UserDto(u.id, u.name, u.age) FROM User1 u WHERE u.name LIKE :name
+        <if test="age != null">
             AND u.age > :age
         </if>
     </select>
@@ -20,7 +20,7 @@
         SELECT u FROM User1 u WHERE u.name LIKE '%'||:name||'%'
 
 
-        <if test="age != null and age.trim() != ''">
+        <if test="age != null">
             AND u.age > :age
         </if>
     </select>

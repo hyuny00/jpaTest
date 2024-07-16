@@ -33,7 +33,7 @@ public class UserJpqlRepository {
 
         params.put("name",  "%" + name + "%");
         params.put("age", age);
-        params.put("age22", age);
+       // params.put("age22", age);
 
        // List likeParam= new ArrayList();
        // likeParam.add("age");

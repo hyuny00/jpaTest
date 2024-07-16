@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.component.CustomObjectMapper;
+import com.example.component.ObjectConvert;
 import com.example.db1.entity.User1;
 import com.example.db1.repository.User1Repository;
 import com.example.db1.repository.UserJpqlRepository;
@@ -25,7 +25,7 @@ public class UserService {
 	private UserJpqlRepository userJpqlRepository;
 
 	@Autowired
-	private  CustomObjectMapper customObjectMapper;
+	private  ObjectConvert customObjectMapper;
 
 
 
