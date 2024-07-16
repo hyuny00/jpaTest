@@ -23,6 +23,8 @@ public class UserDto {
 	private String name;
 
 	private Integer age;
+	
+	private Integer userTel;
 
 	public Long getId() {
 		return id;
@@ -46,6 +48,16 @@ public class UserDto {
 
 	public void setAge(Integer age) {
 		this.age = age;
+	}
+
+
+	public Integer getUserTel() {
+		return userTel;
+	}
+
+
+	public void setUserTel(Integer userTel) {
+		this.userTel = userTel;
 	}
 	
 	
